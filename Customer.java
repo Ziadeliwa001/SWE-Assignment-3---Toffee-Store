@@ -9,22 +9,22 @@ public class Customer extends Catalog{
     public List<Products> cart = new ArrayList<Products>();
 
     public boolean searchProducts(String ProdName){
-        for (Products product : Product) {
+        for (Products product : Product){
             if(product.ProductName.equals(ProdName)){
                 return true;
             }
         }
         return false;
     }
-    public boolean checkStatus()
-    {
+    public boolean checkStatus(String productName) {
         for (Products product : Product) {
-            if(product.status.equals(StatusType.INstock)){
-                return true;
+            if (product.ProductName.equals(productName)){
+                return product.status.equals(StatusType.INstock);
             }
         }
         return false;
     }
+
 
     public void ViewCatalog(){
         DisplayCatalog();
@@ -39,7 +39,7 @@ public void AddToCart(){
         if (searchProducts(ProdName)) {
             for (Products product : Product) {
                 if(product.ProductName.equals(ProdName)){
-                    if (checkStatus()){
+                    if (checkStatus(ProdName)){
                         cart.add(product);
                         System.out.println("Product added to cart successfully");
                     }
