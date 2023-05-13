@@ -24,4 +24,3 @@ public class Admin extends Catalog{
     };
 
 }
-asd
